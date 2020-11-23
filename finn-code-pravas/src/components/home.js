@@ -4,7 +4,9 @@ import utilStyles from '../assets/sass/libs/utils.module.scss'
 
 
 const Home = (props) => {
-   
+
+    console.log(props)
+
     return (
         <>
             <div className={ `${styles.container}` }>

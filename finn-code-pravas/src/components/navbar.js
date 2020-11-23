@@ -16,7 +16,7 @@ import { useImage } from '../libs/useImage'
 const Navbar = () => {
 
     const router = useRouter()
-    const [ showDropDown, setShowDropDown ] = useState(true)
+    const [ showDropDown, setShowDropDown ] = useState(false)
 
     const returnMenuItems = () => {
         return (
@@ -79,7 +79,6 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                
             </div>
         )
     }
