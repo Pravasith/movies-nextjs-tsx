@@ -1,0 +1,23 @@
+// flex-row -centre mixin:
+@import "./_vars";
+// @import url('https://db.onlinewebfonts.com/c/30a71dcf9a1c39558ca4e97c92a4b2fa?family=Noe+Display+Bold');
+
+
+
+
+
+// FLEX MIXINS
+@mixin flexCentreRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexCentreCol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+

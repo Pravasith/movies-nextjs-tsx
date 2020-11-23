@@ -1,0 +1,180 @@
+@import "../libs/vars";
+
+
+
+.container {
+    width: 100%;
+    height: 100vh;
+
+}
+
+
+.nightMode{
+    // background: $lightestGray;
+    background: $highlightColor;
+    // overflow: hidden;
+
+    
+    background-image: url(https://folio-pics.s3.eu-west-2.amazonaws.com/layoutBackground-01.png);
+    background-size: 100%;
+    background-repeat: repeat;
+    animation: animatedBackground 8s linear infinite ;
+}
+
+
+
+
+.loadingContainer{
+    width: 100%;
+    height: 100vh;
+    // z-index: 5;
+
+    position: absolute;
+
+    background: $pureWhite;
+}
+
+
+.mainContainer {
+    width: auto;
+}
+
+
+.background{
+    width: 100%;
+    // position: absolute;
+    position: fixed;
+    // overflow: hidden;
+
+    
+}
+
+
+.scrollThingy{
+    position: fixed;
+    width: 100%;
+    display: none;
+    opacity: 0;
+}
+
+
+
+
+// 
+@media screen and (min-width: 100px) and (max-width: 767px)  and (orientation: portrait)  {
+
+
+    .container{
+        background-size: 280%;
+
+
+
+    }
+
+
+}
+
+
+@media screen and (min-width: 100px) and (max-width: 767px) and (orientation: landscape){
+
+    .container{
+        background-size: 280%;
+    }
+
+}
+
+
+
+
+// 
+@media screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait)  {
+    .container{
+        
+    }
+
+
+    
+
+
+
+}
+
+
+// 
+@media screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape)  {
+    .container{
+    }
+}
+
+
+
+
+
+
+// 
+@media screen and (min-width: 1024px) and (max-width: 1151px) and (orientation: portrait) {
+
+    .container{
+
+    }
+
+
+    
+
+
+
+}
+
+
+// 
+@media screen and (min-width: 1024px) and (max-width: 1151px) and (orientation: landscape) {
+    .container{
+    }
+}
+
+
+
+
+
+
+// 
+@media screen and (min-width: 1152px) and (max-width: 1365px){
+
+
+}
+
+
+
+
+
+
+// 
+@media screen and (min-width: 1366px) and (max-width: 1439px){
+
+}
+
+
+
+// 
+@media screen and (min-width: 1440px) and (max-width: 1919px){
+
+
+}
+
+
+
+
+
+
+
+// RESPONSIVITY
+@media screen and (min-width: 1920px) and (max-width: 6000px){
+
+}
+
+
+
+
+
+
+

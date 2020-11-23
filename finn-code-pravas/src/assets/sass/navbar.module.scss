@@ -1,0 +1,258 @@
+
+
+@import "./libs/_vars";
+@import "./libs/_mixins";
+
+.container{
+    width: 100%;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+
+    nav{
+        width: 100%;
+        // padding: 1em;
+        padding: 1em 5%;
+    
+        // @include flexCentreRow;
+        justify-content: space-between;
+
+        border-bottom: 0.2em solid $pureBlack;
+    }
+
+
+    .hide{
+        display: none;
+    }
+
+
+        
+    .navWrap{
+        justify-content: space-between;
+        height: 15vh;
+        background: $pureWhite;
+    }
+
+    .innerWrap{
+        width: 100%;
+    }
+
+    .menuItems{
+        min-width: 50%;
+    }
+
+
+
+    .logoContainer{
+        width: 7em;
+        height: 4em;
+    }
+
+    .logoFlexWrap{
+        width: 100%;
+        height: 100%;
+
+        a{
+            width: 100%;
+            height: 80%;
+        }
+    }
+
+    .logo{
+        width: 100%;
+        // top: -0.5em;
+        height: 100%;
+    }
+
+
+
+
+
+
+    .searchContainer{
+        width: 100%;
+        height: 100%;
+        // background: yellow;
+    }
+
+
+    .searchIcon{
+        width: 2em;
+        margin-right: 1em;
+    }
+
+
+    .searchForm{
+        width: 100%;
+    }
+
+    .searchField{
+        width: 100%;
+        padding: 0.8em 1em;
+        border: 0.2em solid $darkGray;
+    }
+
+    .dropDown{
+        width: 100%;
+        border: 0.15em solid $pureBlack;
+        top: 120%;
+        // padding: 0.8em 0;
+        background: $pureWhite;
+        padding-top: 0.8em;
+    }
+
+    .previewSearches{
+        margin: 0em 0.8em;
+        
+    }
+
+
+    .previewMovie{
+        // margin-bottom: 0.4em;
+        cursor: pointer;
+
+        &:hover{
+            h2{
+                text-decoration: underline;
+                color: $highlightColor;
+            }
+        }
+    }
+
+    .miniThumb{
+        max-width: 20%;
+    }
+
+    .details{
+        margin: 0.5em;;
+    }
+
+  
+
+
+
+    
+}
+
+
+
+
+
+// 
+@media screen and (min-width: 100px) and (max-width: 767px)  {
+    .container{
+        ul{
+            margin: 25vh 0;
+        }
+
+        li{
+            margin: 0;
+            font-size: 2em;
+        }
+    }
+}
+
+
+
+
+// 
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
+
+}
+
+
+
+
+
+
+// 
+@media screen and (min-width: 1024px) and (max-width: 1151px) {
+
+
+//   h1{
+//     font-size: 3em;
+//   }
+
+//   h2{
+//     font-size: 2.5em;
+//   }
+
+//   li{
+//     font-size: 2em;
+//   }
+
+    .container{
+        .logoContainer{
+        }
+    }
+
+
+
+    
+}
+
+
+
+
+// 
+@media screen and (min-width: 1152px) and (max-width: 1439px){
+    
+    .container{
+        li{
+            // font-size: 2em;
+            margin: 0px 0 0 30%;
+        }
+    }
+
+}
+
+
+// 
+@media screen and (min-width: 1440px) and (max-width: 1919px){
+    
+    .container{
+
+        .logoContainer{
+            width: 2.5em;
+        }
+
+        li{
+            font-size: 1.5em;
+            margin: 0px 0 0 30%;
+        }
+    }
+
+}
+
+
+
+
+// RESPONSIVITY
+@media screen and (min-width: 1920px) and (max-width: 6000px){
+
+    
+ 
+    .container{
+
+
+        nav{
+            padding: 2em 5%;
+        }
+
+        .logoContainer{
+            width: 3.5em;
+            
+        }
+    
+        .logo{
+            top: -1em;
+        }
+    }
+
+    
+
+}
+
+

@@ -1,7 +1,19 @@
-import '../styles/globals.css'
+import '../src/assets/sass/libs/global.scss'
+import Layout from '../src/components/layout/index'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+const App = ({ Component, pageProps, router }) => {
+    return (
+        <>
+            <Layout>
+                <Component
+                    {...pageProps} 
+                    key={router.route}
+                />
+            </Layout>
+        </>
+    )
 }
 
-export default MyApp
+
+export default App

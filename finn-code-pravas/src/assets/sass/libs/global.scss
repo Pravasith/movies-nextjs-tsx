@@ -1,0 +1,401 @@
+
+@font-face {
+	font-family: "Noe Display Bold";
+	src: url("../../fonts/NoeDisplay.eot"); /* IE9*/
+	src: 
+		// url("NoeDisplay.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+		url("../../fonts/NoeDisplay.woff2") format("woff2"), /* chrome、firefox */
+		url("../../fonts/NoeDisplay.woff") format("woff"), /* chrome、firefox */
+		url("../../fonts/NoeDisplay.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+		// url("NoeDisplay.svg#NoeDisplay-Bold") format("svg"); /* iOS 4.1- */
+}
+
+
+
+@import "./vars";
+
+
+html {
+	// overflow: scroll;
+    // overflow: visible;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 2vh;  /* Remove scrollbar space */
+	background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: $highlightColor;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "Calibre", sans-serif;
+	line-height: 1.6;
+
+	scroll-behavior: smooth;
+
+}
+
+* {
+  	box-sizing: border-box;
+}
+
+a {
+	font-family: "Calibre", sans-serif;
+	text-decoration: none;
+	color: $pureBlack;
+	
+
+	// &:hover{
+	// 	color: $highlightColor;
+	// }
+}
+
+nav a{
+	font-size: 1.05em;
+	font-weight: 500;
+}
+
+
+
+img {
+	max-width: 100%;
+	// display: block;
+
+	// image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+	image-rendering: -moz-crisp-edges;          /* Firefox */
+	image-rendering: -o-crisp-edges;            /* Opera */
+	image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming)*/
+	-ms-interpolation-mode: nearest-neighbor;   /* IE (non-standard property) */
+}
+
+ul, ol {
+  	padding: 0;
+}
+
+li{
+	list-style: none;
+	// font-size: 1.1em;
+}
+
+h1{
+	font-family: "Noe Display Bold", serif;
+	font-size: 2em;
+	line-height: 1em;
+	margin: 0;
+	font-weight: 400;
+	color: $darkestGray;
+
+	span{
+		// display: inline-block;
+	}
+
+}
+
+
+h2{
+	font-family: "Calibre", sans-serif;
+	
+	font-size: 1.5em;
+	line-height: 1em;
+	font-weight: 400;
+	color: $darkerGray;
+	margin: 0;
+
+	span{
+		// font-weight: 600;
+		// display: inline-block;
+
+		//     -webkit-text-fill-color: $lightestGray; /* Will override color (regardless of order) */
+		// -webkit-text-stroke-width: 0.05em;
+		// -webkit-text-stroke-color: $darkestGray;
+	}
+}
+
+
+
+p{
+	font-family: "Calibre", sans-serif;
+	font-size: 0.98em;
+	line-height: 1.35em;
+	font-weight: 300;
+	margin: 0;
+
+	span{
+		// display: inline-block;
+		font-weight: 600;
+	}
+}
+
+
+
+::-moz-selection { /* Code for Firefox */
+	color: $pureWhite;
+	background: $highlightColor;
+}
+
+::selection {
+	color: $pureWhite;
+	background: $highlightColor;
+}
+
+
+
+
+.spanInlineBlock{
+  	display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+// 
+@media screen and (min-width: 100px) and (max-width: 767px) and (orientation: portrait)  {
+
+  h1{
+    font-size: 1.65em;
+  }
+
+
+  h2{
+    font-size: 1.15em;
+	line-height: 1em;
+	font-weight: 600;
+  }
+
+  nav a{
+	font-size: 1em;
+  }
+
+  p{
+	font-size: 0.8em;
+    line-height: 1.2em;
+  }
+
+}
+
+
+
+@media screen and (min-width: 100px) and (max-width: 767px) and (orientation: landscape) {
+	h1{
+		// font-size: 1.65em;
+		font-size: 1.35em;
+	}
+
+
+	h2{
+		font-size: 1.15em;
+		line-height: 1em;
+		font-weight: 600;
+	}
+
+	nav a{
+		font-size: 1em;
+	}
+
+	p{
+		font-size: 0.8em;
+		line-height: 1.2em;
+	}
+	
+}
+
+
+
+// 
+@media screen and (min-width: 768px) and (max-width: 1023px)  and (orientation: portrait) {
+  h1{
+    font-size: 2.45em;
+  }
+
+  h2{
+    font-size: 1.85em;
+    // font-weight: 600;
+  }
+
+	nav a{
+		font-size: 1.25em;
+	}
+
+  p{
+	font-size: 1.15em;
+    line-height: 1.1em;
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1023px)  and (orientation: landscape) {
+	h1{
+		font-size: 2.45em;
+	}
+
+	h2{
+		font-size: 1.85em;
+		// font-weight: 600;
+	}
+
+
+	nav a{
+		font-size: 1.25em;
+	}
+
+	p{
+		font-size: 1.15em;
+		line-height: 1.1em;
+	}
+}
+
+
+
+
+
+// 
+@media screen and (min-width: 1024px) and (max-width: 1151px)  and (orientation: portrait)  {
+
+
+  h1{
+    font-size: 3em;
+  }
+
+  h2{
+    font-size: 2.1em;
+	// font-weight: 600;
+	font-size: 2.3em;
+  }
+
+  nav a{
+    font-size: 1.45em;
+  }
+
+
+
+  p{
+	font-size: 1.4em;
+    line-height: 1.2em;
+  }
+}
+
+
+@media screen and (min-width: 1024px) and (max-width: 1151px)  and (orientation: landscape)  {
+	h1{
+		font-size: 2.45em;
+	}
+
+	h2{
+		font-size: 1.85em;
+		// font-weight: 600;
+	}
+
+
+	nav a{
+		font-size: 1.25em;
+	}
+
+	p{
+		font-size: 1.15em;
+		line-height: 1.1em;
+	}
+}
+
+
+// 
+@media screen and (min-width: 1152px) and (max-width: 1365px){
+
+  h2{
+    font-size: 1.5em;
+    line-height: 1em;
+  }
+    
+  nav a{
+    font-size: 1.05em;
+  }
+
+  p{
+    font-size: 1em;
+    // line-height: 1.2em;
+  }
+
+
+}
+
+
+
+// 
+@media screen and (min-width: 1366px) and (max-width: 1439px){
+
+//   a{
+//     font-size: 1.25em;
+//   }
+
+
+
+}
+
+
+// 
+@media screen and (min-width: 1440px) and (max-width: 1919px){
+
+	h2{
+		// font-size: 2em;
+		// line-height: 0.9em;
+	}
+
+	nav a{
+		font-size: 0.8em;
+	}
+
+
+	p{
+		// font-size: 1.4em;
+		font-size: 1.1em;
+		// line-height: 1.2em;
+		font-size: 1.175em;
+	}
+
+}
+
+
+
+@media screen and (min-width: 1920px) and (max-width: 6000px){
+	h1{
+		// line-height: 1em;
+		line-height: 0.95em;
+		font-size: 3em;
+	}
+
+	nav a{
+		font-size: 0.85em;
+	}
+
+
+	h2{
+		font-size: 2em;
+		line-height: 1em;
+		
+	}
+
+	
+
+	p{
+		// font-size: 1.4em;
+		font-size: 1.35em;
+	}
+
+}
+
+
+
+
