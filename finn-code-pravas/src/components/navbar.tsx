@@ -10,7 +10,7 @@ import utilStyles from '../assets/sass/libs/utils.module.scss'
 import { NavbarLogo, SearchLogo } from '../assets/SVGs/navbarSVGs.js'
 
 
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { useImage } from '../libs/useImage'
 import { useForm } from '../libs/useForm'
 import { useMovies } from '../libs/useMovies'
@@ -117,15 +117,15 @@ const Navbar: FC = () => {
                         
                     />
 
-                    {
+                    {/* {
                         !loading && showDropDown
                         ?
                         <DropDownMenu/>
                         :
                         null
-                    }
+                    } */}
 
-                    {/* <DropDownMenu/> */}
+                    <DropDownMenu/>
 
                 
                 </div>

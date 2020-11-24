@@ -40,8 +40,8 @@
     }
 
     .movie{
-        min-width: 30vw;
-        width: 30vw;
+        min-width: 20vw;
+        width: 20vw;
         padding: 0.75em;
         // margin-right: 0.5em;
         transition: 0.25s ease-out;
@@ -114,6 +114,9 @@
         padding-bottom: 0em;
         border: 0.125em solid $darkerGray;
         border-radius: 0.35em;
+
+        margin-left: 1em;
+        min-width: fit-content;
     }
 
 
@@ -292,6 +295,23 @@
 @media screen and (min-width: 1920px) and (max-width: 6000px){
 
     .container{
+
+        .genreTitle{
+            font-size: 3em;
+            margin-bottom: 0;
+        }
+
+        .logoContainer{
+            width: 11.5em;
+            height: 5.5em;
+        }
+
+        .searchIcon{
+            width: 2.8em;
+            margin-right: 2em;
+        }
+
+        
     }
 }
 

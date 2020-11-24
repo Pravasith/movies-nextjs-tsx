@@ -135,6 +135,10 @@ p{
 }
 
 
+input{
+	font-size: 1.25em;
+}
+
 
 ::-moz-selection { /* Code for Firefox */
 	color: $pureWhite;
@@ -318,10 +322,11 @@ p{
     font-size: 1.5em;
     line-height: 1em;
   }
-    
-//   nav a{
-//     font-size: 1.05em;
-//   }
+
+  	input{
+		font-size: 1.25em;
+	}
+
 
   p{
     font-size: 1em;
@@ -339,7 +344,7 @@ p{
 //   a{
 //     font-size: 1.25em;
 //   }
-
+	
 
 
 }
@@ -353,9 +358,9 @@ p{
 		// line-height: 0.9em;
 	}
 
-	// nav a{
-	// 	font-size: 0.8em;
-	// }
+	input{
+		font-size: 1.5em;
+	}
 
 
 	p{
@@ -387,7 +392,9 @@ p{
 		
 	}
 
-	
+	input{
+		font-size: 1.5em;
+	}
 
 	p{
 		// font-size: 1.4em;

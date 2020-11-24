@@ -8,7 +8,7 @@
     .detailsWrap{
         width: 100%;
 
-        height: 30em;
+        // height: 30em;
         margin-top: 15vh;
         // background: pink;
 
@@ -27,6 +27,15 @@
     .movieDetails{
         width: 70%;
         padding: 1em 0;
+
+        h2{
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        p{
+            font-size: 1.5em;
+        }
     }
 
     .titleWrap, .descriptionWrap{
@@ -44,8 +53,8 @@
     }
 
     .starWrap{
-        width: 2em;
-        margin: 0 0.15em;
+        width: 3em;
+        margin: 0.5em 0.15em;
     }
 
     .movieTitle{
@@ -119,14 +128,39 @@
 // 
 @media screen and (min-width: 1152px) and (max-width: 1365px){
 
+    .container{
+
+        .posterWrap{
+            max-width: 40%;
+        }
+
+        .movieDetails{
+            width: 60%;
+
+            h2{
+                width: 70%;
+                font-size: 3em;
+                font-weight: 600;
+            }
+    
+            p{
+                font-size: 1.65em;
+            }
+        }
+
+
+    }
 
 
 }
+
+
+
 
 
 
 // 
-@media screen and (min-width: 1366px) and (max-width: 1919px){
+@media screen and (min-width: 1366px) and (max-width: 1339px){
 
 
 
@@ -134,11 +168,54 @@
 
 }
 
+@media screen and (min-width: 1440px) and (max-width: 1919px){
+
+    .container{
+
+        .posterWrap{
+            max-width: 40%;
+        }
+
+        .movieDetails{
+            width: 60%;
+
+            h2{
+                width: 70%;
+                font-size: 3em;
+                font-weight: 600;
+            }
+    
+            p{
+                font-size: 1.8em;
+            }
+        }
+
+
+    }
+
+}
 
 
 @media screen and (min-width: 1920px) and (max-width: 6000px){
 
     .container{
+
+        .posterWrap{
+            max-width: 40%;
+        }
+
+        .movieDetails{
+            width: 60%;
+
+            h2{
+                font-size: 3em;
+                font-weight: 600;
+            }
+    
+            p{
+                font-size: 2em;
+            }
+        }
     }
 }
 

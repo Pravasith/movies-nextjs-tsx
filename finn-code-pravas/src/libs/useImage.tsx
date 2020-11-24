@@ -13,7 +13,7 @@ export const useImage: FC<string[]> = (image: string[]) => {
 
     const [ url, alt, posterOrBackdrop ] = image
 
-    let width, height, scale = 1.5
+    let width, height, scale = 2
 
     if(posterOrBackdrop === "backdrop"){
         // Landscape/backdrop

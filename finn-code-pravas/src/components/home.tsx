@@ -193,10 +193,18 @@ const Home: FC<Props> = (props: Props) => {
                         ease: 'Power4.out'
                     }
                 )
+
                 gsap.set(
                     `.right-btn-${genre}`,
                     {
                         display: 'none'
+                    }
+                )
+
+                gsap.set(
+                    `.left-btn-${genre}`,
+                    {
+                        display: 'block'
                     }
                 )
             }
@@ -221,7 +229,6 @@ const Home: FC<Props> = (props: Props) => {
                     <a>
                         <div 
                             className={ `${styles.movie} ${utilStyles.flexCol_NW}` }
-                            
                             >
                             <div className={ `${styles.thumbnail} ${utilStyles.posRel}` }>
                                 <div className={ `${styles.imgWrap}` }>
