@@ -25,7 +25,7 @@ const Navbar = () => {
     const { data, loading } = useMovies(values.movie_searched)
 
     const returnMovieSuggestion = () => {
-        if(data){
+        if(data.length > 0){
             return data.map((movie, i) => {
                 return (
                     <Link
@@ -67,6 +67,10 @@ const Navbar = () => {
                     
                 )
             })
+        }
+
+        else{
+            return <p>{`Movie not found, use full words`}</p>
         }
     }
    
