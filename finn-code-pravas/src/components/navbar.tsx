@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 
@@ -10,23 +9,23 @@ import utilStyles from '../assets/sass/libs/utils.module.scss'
 import { NavbarLogo, SearchLogo } from '../assets/SVGs/navbarSVGs.js'
 
 
-import { useEffect, useState } from 'react'
+import { FunctionComponent,  ReactChildren, ReactElement, useState } from 'react'
 import { useImage } from '../libs/useImage'
 import { useForm } from '../libs/useForm'
 import { useMovies } from '../libs/useMovies'
+import { Movie } from '../../interfaces/movies'
 
-const Navbar = () => {
+const Navbar: FunctionComponent = () => {
 
-    const router = useRouter()
     const [ showDropDown, setShowDropDown ] = useState(true)
-
     const [ values, setOnChangeValues ] = useForm({ movie_searched: '' })
 
     const { data, loading } = useMovies(values.movie_searched)
 
-    const returnMovieSuggestion = () => {
+    const movieSuggestions = () => {
+
         if(data.length > 0){
-            return data.map((movie, i) => {
+            return data.map((movie:Movie, i) => {
                 return (
                     <Link
                         href={`/movie-details/${movie.slug}`}
@@ -82,7 +81,7 @@ const Navbar = () => {
                 <div className={ `${styles.previewSearches} ${utilStyles.flexCol_NW}` }>
 
                     {
-                        returnMovieSuggestion()
+                        movieSuggestions()
                     }
 
                 </div>
@@ -92,7 +91,7 @@ const Navbar = () => {
         )
     }
 
-    const returnMenuItems = () => {
+    const MenuItems = (): ReactElement => {
         return (
             <div className={ `${styles.searchContainer} ${utilStyles.flexRow_E}` }>
                 <div className={ `${styles.searchIcon} ${utilStyles.flexCol_NW}` }>
@@ -152,9 +151,7 @@ const Navbar = () => {
 
 
                     <div className={`${styles.menuItems} ${utilStyles.flexRow_E}`}>
-                        {
-                            returnMenuItems()
-                        }
+                        <MenuItems/>
                     </div>
                 
                 </nav>

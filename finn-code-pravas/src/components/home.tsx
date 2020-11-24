@@ -9,15 +9,34 @@ import { LeftSliderButtonIcon, RightSliderButtonIcon } from '../assets/SVGs/home
 import { useImage } from '../libs/useImage'
 import Head from 'next/head'
 import Link from 'next/link'
+import { Movie } from '../../interfaces/movies'
 
 
-const Home = (props) => {
+type Props = {
+    movies: Movie[]
+}
+
+
+interface Genre {
+    [key: string]: Movie[]
+}
+
+
+
+const Home = (props: Props) => {
     const { movies } = props
 
-    // console.log(movies)
+    
+
+  
+
 
     const genreWiseData = () => {
-        const moviesCategorisedIntoGenres = movies.reduce((all, movie, i) => {
+
+
+        
+
+        const moviesCategorisedIntoGenres = movies.reduce((all: Genre, movie, i) => {
             // imagine 'all' has this data like so -
             // all = {
             //     Action: [movie1Obj, movie2Obj, movie3Obj...],
@@ -28,8 +47,12 @@ const Home = (props) => {
             // genres Action, Adventure..etc. And if the desired genre doesn't exist,
             // we need to create one and push the movieObj
 
-            movie.genres.forEach(genre => {
+            movie.genres.forEach((genre: string) => {
+
+
+                // if(all[genre]) all[genre].push(movie)
                 if(all[genre]) all[genre].push(movie)
+
                 else all = {
                     ...all,
                     [genre]: [movie]
@@ -85,21 +108,23 @@ const Home = (props) => {
 
     
 
-    const noOfScrolls = {}
+    const noOfScrolls: {
+        [key: string] : number
+    } = {}
 
-    const slideIt = (leftOrRight, genre) => {
+    const slideIt = (leftOrRight: string, genre: string) => {
 
         let sliderElement = document.getElementsByClassName(`${genre}-slideMovie`)[0]
         let containerElement = document.getElementsByClassName(`${styles.sliderWrap}`)[0]
 
-        const elementWidth = sliderElement.scrollWidth,
-            containerWidth = containerElement.clientWidth
+        const elementWidth: number = sliderElement.scrollWidth,
+            containerWidth: number = containerElement.clientWidth
 
 
         // We can calculate the number of times sliderElement
         // can be scrolled in the containerElement
-        const scrollTimes = Math.floor(elementWidth / containerWidth)
-        const scrollWidthRemaining = elementWidth % containerWidth
+        const scrollTimes: number = Math.floor(elementWidth / containerWidth)
+        const scrollWidthRemaining: number = elementWidth % containerWidth
 
         // console.log({elementWidth, containerWidth, scrollTimes, scrollWidthRemaining})
 
@@ -189,9 +214,9 @@ const Home = (props) => {
     }
 
 
-    const returnMoviesInGenre = (genre) => {
+    const returnMoviesInGenre = (genre: string) => {
 
-        return genreWiseMovies[genre].map((movie, i) => {
+        return genreWiseMovies[genre].map((movie: Movie, i) => {
             const { backdrop, title, length, genres, slug } = movie
 
 

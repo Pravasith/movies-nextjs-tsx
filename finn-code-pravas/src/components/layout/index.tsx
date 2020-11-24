@@ -1,33 +1,23 @@
-
-
-import React from "react"
-import { useRouter } from "next/router" 
- 
+import { ReactNode, FunctionComponent } from "react"
 
 
 import styles from '../../assets/sass/layout/layout.module.scss'
-
 import Navbar from '../navbar'
 
 
 
+type Props = {
+    children: ReactNode
+}
 
 
-
-
-const Layout = ( props ) => {
-
+const Layout = ( props: Props ) => {
 
     const { children } = props
 
-    const router = useRouter()
-    const currentRoute = router.asPath
 
 
-
-
-
-    const returnPageContent = () => {
+    const PageContent: FunctionComponent = () => {
 
         return (
             <>
@@ -35,11 +25,7 @@ const Layout = ( props ) => {
 
                 <div className={styles.container}>
                     <div className={styles.mainContainer}>
-                        <Navbar
-                            style = {{
-                                zIndex : 1
-                            }}
-                        />
+                        <Navbar/>
                         <main className = "main">
                             {
                                 children
@@ -53,10 +39,7 @@ const Layout = ( props ) => {
 
     return (
         <>
-          
-            {
-                returnPageContent(props)
-            }
+            <PageContent/>
         </>
     )
 }

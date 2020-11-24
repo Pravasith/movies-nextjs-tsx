@@ -8,7 +8,7 @@ export const useMovies = (movie_searched) => {
 
     const [ mState, setMState ] = useState(
         {
-            data : null,
+            data : [],
             loading : true
         }
     )
