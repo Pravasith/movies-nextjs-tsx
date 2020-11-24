@@ -44,6 +44,13 @@ export const useMovies = (movie_searched) => {
             })
             .catch(e => console.error("Something wrong with useMovies Hook dude.", e))
         }
+
+        // else{
+        //     setMState({
+        //         data: [],
+        //         loading : false
+        //     })
+        // }
        
 
     }, [url])

@@ -24,33 +24,26 @@ const Navbar = () => {
 
     const { data, loading } = useMovies(values.movie_searched)
 
-   
+    const returnMovieSuggestion = () => {
+        if(data){
+            return data.map((movie, i) => {
+                return (
+                    <Link
+                        href={`/movie-details/${movie.slug}`}
+                        key = {`suggestion-movie-${i}`}
+                        >
+                        <a>
 
-    const returnMenuItems = () => {
-        return (
-            <div className={ `${styles.searchContainer} ${utilStyles.flexRow_E}` }>
-                <div className={ `${styles.searchIcon} ${utilStyles.flexCol_NW}` }>
-                    <SearchLogo/>
-                </div>
-
-                <div className={ `${styles.searchForm} ${utilStyles.posRel}` }>
-                    
-                    <input 
-                        type="text"
-                        name="movie_searched" 
-                        className={ `${styles.searchField}` }
-                        onChange={setOnChangeValues}
-                    />
-
-                    <div className={ `${!loading ? null : styles.hide} ${styles.dropDown} ${utilStyles.posAbs_NW}` } >
-                        <div className={ `${styles.previewSearches} ${utilStyles.flexCol_NW}` }>
-                            <div className={ `${styles.previewMovie} ${utilStyles.flexRow_NW}` }>
+                            <div 
+                                className={ `${styles.previewMovie} ${utilStyles.flexRow_NW}` }
+                                key = {`suggestion-${i}`}
+                                >
                                 <div className={ `${styles.miniThumb}` }>
                                     {
                                         useImage(
                                             [
-                                                `https://wookie.codesubmit.io/static/posters/d6822b7b-48bb-4b78-ad5e-9ba04c517ec8.jpg`,
-                                                `dark-knight`,
+                                                movie.poster,
+                                                movie.title,
                                                 `poster`
                                             ]
                                         )
@@ -60,36 +53,75 @@ const Navbar = () => {
                                 <div className={ `${styles.details} ${utilStyles.flexCol_NW}` }>
                                     <h2>
                                         {
-                                            loading ? "..." : 
-                                            JSON.stringify(data, null, 2)
+                                        movie.title
                                         }
-                                        </h2>
-                                    <p>IMDB <span>9.0</span></p>
-                                    <p>{`Starring ${"Put your string here"}`}</p>
+                                    </h2>
+                                    <p>IMDB <span>{movie.imdb_rating}</span></p>
+                                    <p>{`Starring ${movie.cast.join(', ')}`}</p>
                                 </div>
                             </div>
 
-                            <div className={ `${styles.previewMovie} ${utilStyles.flexRow_NW}` }>
-                                <div className={ `${styles.miniThumb}` }>
-                                    {
-                                        useImage(
-                                            [
-                                                `https://wookie.codesubmit.io/static/posters/d6822b7b-48bb-4b78-ad5e-9ba04c517ec8.jpg`,
-                                                `dark-knight`,
-                                                `poster`
-                                            ]
-                                        )
-                                    }
-                                </div>
+                        </a>
+                            
+                    </Link>
+                    
+                )
+            })
+        }
+    }
+   
 
-                                <div className={ `${styles.details} ${utilStyles.flexCol_NW}` }>
-                                    <h2>Dark Knight Rises</h2>
-                                    <p>IMDB <span>9.0</span></p>
-                                    <p>{`Starring ${"Put your string here"}`}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    const DropDownMenu = () => {
+        return (
+
+            <div className={ `${styles.dropDown} ${utilStyles.posAbs_NW}` } >
+                <div className={ `${styles.previewSearches} ${utilStyles.flexCol_NW}` }>
+
+                    {
+                        returnMovieSuggestion()
+                    }
+
+                </div>
+            </div>
+    
+    
+        )
+    }
+
+    const returnMenuItems = () => {
+        return (
+            <div className={ `${styles.searchContainer} ${utilStyles.flexRow_E}` }>
+                <div className={ `${styles.searchIcon} ${utilStyles.flexCol_NW}` }>
+                    <SearchLogo/>
+                </div>
+
+                <div 
+                    className={ `${styles.searchForm} ${utilStyles.posRel}` }
+                    onMouseEnter={() => setShowDropDown(true)}
+                    onMouseLeave={() => setShowDropDown(false)}
+                    tabIndex={1}
+                    >
+                    
+                    <input 
+                        type="text"
+                        autoComplete="off"
+                        name="movie_searched" 
+                        className={ `${styles.searchField}` }
+                        onChange={setOnChangeValues}
+                        
+                    />
+
+                    {
+                        !loading && showDropDown
+                        ?
+                        <DropDownMenu/>
+                        :
+                        null
+                    }
+
+                    {/* <DropDownMenu/> */}
+
+                
                 </div>
 
             </div>
