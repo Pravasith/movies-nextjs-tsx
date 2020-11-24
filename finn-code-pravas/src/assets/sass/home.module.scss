@@ -12,18 +12,23 @@
 
     .genreWrap{
         width: 100%;
-        margin: 1em 0;
+        // margin: 1em 0;
+    }
+
+    .sliderWrap{
+        width: 100%;
+        margin: 0.45em 5%;
     }
 
     .genreTitle{
         width: 100%;
-        padding: 0.45em 5%;
+        margin: 2em 5%;
+        margin-bottom: 0.5em;
+
     }
 
     .moviesInGenre{
         width: 100%;
-        padding: 0.45em 5%;
-        overflow-x: hidden;
     }
 
     .movie{
@@ -76,6 +81,88 @@
         border: 0.125em solid $darkerGray;
         border-radius: 0.35em;
     }
+
+
+    
+    .clickButton{
+
+        
+        
+        border-radius: 100em;
+        cursor: pointer;
+        border: 0.2em solid $pureBlack;
+        padding: 0;
+
+        background: $pureWhite;
+        transition: 0.2s;
+
+        box-shadow: -4px 4px 10px 5px #00000028;
+        
+
+        path{
+            // stroke: gold;
+            stroke-width: 0.35em;
+        }
+
+        &:hover, &:focus{
+           
+
+        
+
+            .arrowIconLeft{
+                transform: translateX(-0.25em);
+            }
+
+            .arrowIconRight{
+                transform: translateX(0.25em);
+            }
+
+
+            // path{
+            //     // stroke: gold;
+            //     // stroke-width: 0.55em;
+            // }
+        }
+
+        // &:focus{
+        //     outline: 0;
+        // }
+
+        &:focus{
+            outline: 0;
+
+            // background-image: url(https://folio-pics.s3.eu-west-2.amazonaws.com/layoutBackgroundYellow-02.png);
+
+            // path{
+            //     stroke: $pureBlack;
+            //     // stroke-width: 0.55em;
+            // }
+        }
+    }
+
+    .arrowIconLeft, .arrowIconRight{
+        width: 4vw;
+        height: 4vw;
+        transition: 0.2s ease-out;
+        margin: 0.5em;
+    }
+
+ 
+
+    .leftButton, .rightButton{
+        z-index: 1;
+        top: 40%;
+        transform: translate(-50%, -50%);
+    }
+
+    .leftButton{
+        // transform: translate(-50%, -50%);
+    }
+
+    .rightButton{
+        margin-right: 3vw;
+    }
+
 
 
 

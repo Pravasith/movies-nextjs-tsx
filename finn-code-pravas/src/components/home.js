@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import styles from '../assets/sass/home.module.scss'
 import utilStyles from '../assets/sass/libs/utils.module.scss'
+import { LeftSliderButtonIcon, RightSliderButtonIcon } from '../assets/SVGs/homeSVGs'
 
 import { useImage } from '../libs/useImage'
 
@@ -95,11 +96,40 @@ const Home = (props) => {
                     {genre}
                 </h2>
 
-                <div className={ `${styles.moviesInGenre} ${utilStyles.flexRow_NW}` }>
-                    {
-                        returnMoviesInGenre(genre)
-                    }
+                <div className={ `${styles.sliderWrap} ${utilStyles.posRel}` }>
+                   
+
+                    <div className={ `${styles.leftButton}  ${utilStyles.posAbs_NW}` }>
+                        <button 
+                            className={ `${styles.clickButton} ${utilStyles.flexRow_Centre}` }
+                            onClick={() => {}}
+                            >
+                            <div className={ `${styles.arrowIconLeft}` }>
+                                <LeftSliderButtonIcon/>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div className={ `${styles.moviesInGenre} ${utilStyles.flexRow_NW}` }>
+                        {
+                            returnMoviesInGenre(genre)
+                        }
+                    </div>
+
+                    <div className={ `${styles.rightButton}  ${utilStyles.posAbs_NE}` }>
+                        <button 
+                            className={ `${styles.clickButton} ${utilStyles.flexRow_Centre}` }
+                            onClick={() => {}}
+                            >
+                            <div className={ `${styles.arrowIconRight}` }>
+                                <RightSliderButtonIcon/>
+                            </div>
+                        </button>
+                    </div>
+
                 </div>
+
+                
             </div>
         ))
     
