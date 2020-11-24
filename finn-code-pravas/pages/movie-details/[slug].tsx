@@ -1,11 +1,17 @@
+import { GetStaticProps, GetStaticPaths } from 'next'
 
-
+import { Movie } from '../../interfaces/movies'
 import MovieDetails from '../../src/components/movieDetails'
 import { API_URL } from '../../src/configs/apiConfig'
 
 import { getDataFromAPI } from '../../src/libs/getData'
 
-function Index(props) {
+
+type MovieDetailProps = {
+    movieData: Movie[]
+}
+
+function Index(props: MovieDetailProps) {
 
 
     return (
@@ -27,14 +33,14 @@ function Index(props) {
 // This function gets called at build time
 // Configuring this function so that only slugs 
 // can be used as params to get this page
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     // Call an external API endpoint to get movies
 
     let url = API_URL
-    const data = await getDataFromAPI(url)
+    const data: { movies: Movie[] } = await getDataFromAPI(url) 
     const { movies } = data
 
-    const paths = movies.map(movie => `/movie-details/${ movie.slug }`)
+    const paths = movies.map((movie: Movie) => `/movie-details/${ movie.slug }`)
 
     // console.log(paths)
 
@@ -44,21 +50,29 @@ export async function getStaticPaths() {
 
 
 
+
 // This also gets called at build time
 // This function gets movie detail data from our movies API
 // and passes it to the 'Index' component as props
 // We then use it for OGs / Bookmarks / SEO practices
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
 
-    let { slug } = params
+    let movieData: Movie | {} = {}
 
-    let url = `${ API_URL }?q=${ slug }`
-    const data = await getDataFromAPI(url)    
+    if(params){
+        const { slug } = params
+
+        const url: string = `${ API_URL }?q=${ slug }`
+        const data: { movies: Movie[] | [] } = await getDataFromAPI(url) 
+        movieData = data.movies[0]
+    }
+   
+    
   
     // Pass post data to the page via props
     return {
         props : {
-            movieData: data.movies[0]
+            movieData
         }
     }
 }

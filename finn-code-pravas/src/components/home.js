@@ -14,6 +14,8 @@ import Link from 'next/link'
 const Home = (props) => {
     const { movies } = props
 
+    // console.log(movies)
+
     const genreWiseData = () => {
         const moviesCategorisedIntoGenres = movies.reduce((all, movie, i) => {
             // imagine 'all' has this data like so -

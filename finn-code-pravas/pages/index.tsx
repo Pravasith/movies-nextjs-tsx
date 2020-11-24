@@ -1,10 +1,17 @@
+import { GetStaticProps } from 'next'
+import { Movie } from '../interfaces/movies'
+
 import Home from '../src/components/home'
 import { API_URL } from '../src/configs/apiConfig'
 import { getDataFromAPI } from '../src/libs/getData'
 
 
 
-function Index(props) {
+type HomeProps = {
+	movies : Movie[]
+}
+
+function Index(props: HomeProps) {
 
 	return (
 		<div className="container">
@@ -20,15 +27,19 @@ function Index(props) {
 	)
 }
 
+
+
+
 // This also gets called at build time
 // This function gets movie detail data from our movies API
 // and passes it to the 'Index' component as props
 // We then use it for OGs / Bookmarks / SEO practices
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 
 	let url = API_URL
-	const data = await getDataFromAPI(url)    
+	const data: { movies : Movie[] } = await getDataFromAPI(url)    
 
+	
 	// Pass post data to the page via props
 	return {
 		props : {

@@ -71,7 +71,6 @@ const MovieDetails = (props) => {
 
     const HeadTag = () => {
 
-        console.log(movieData.poster)
 
         const previewImage = movieData.poster,
             description = movieData.overview,
