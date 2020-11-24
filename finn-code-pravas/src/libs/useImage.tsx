@@ -9,7 +9,7 @@ export const useImage: FC<string[]> = (image: string[]) => {
 
     // This is relatively new in Next JS (10+ release) and
     // it basically does the job of cloudinary, optimizes 
-    // images according to screen sizes ..etc
+    // images according to screen sizes ..etc.
 
     const [ url, alt, posterOrBackdrop ] = image
 
