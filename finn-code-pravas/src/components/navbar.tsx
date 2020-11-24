@@ -21,9 +21,9 @@ const Navbar: FC = () => {
     const router = useRouter()
     const [ showDropDown, setShowDropDown ] = useState(true)
 
-    const [ values, setOnChangeValues ] = useForm({ movie_searched: '' })
-
-    const { data, loading } = useMovies(values.movie_searched)
+    const { values, handler } = useForm({ movie_searched: '' }) // My custom hook that I use for Forms
+    const { data, loading } = useMovies(values.movie_searched) // My custom hook that hits the api to get
+    // the movie data when 'values' changes. 'values' changes when user input changes
 
     const returnMovieSuggestion = () => {
         if(data !== null && data.length > 0){
@@ -113,7 +113,7 @@ const Navbar: FC = () => {
                         autoComplete="off"
                         name="movie_searched" 
                         className={ `${styles.searchField}` }
-                        onChange={setOnChangeValues}
+                        onChange={handler}
                         
                     />
 
