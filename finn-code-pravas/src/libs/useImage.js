@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const useImage = image => {
     const [ url, alt, posterOrBackdrop ] = image
 
-    let width, height, scale = 1
+    let width, height, scale = 1.5
 
     if(posterOrBackdrop === "backdrop"){
         // Landscape/backdrop

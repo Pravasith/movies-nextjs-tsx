@@ -10,6 +10,75 @@
         margin-top: 15vh;
     }
 
+    .genreWrap{
+        width: 100%;
+        margin: 1em 0;
+    }
+
+    .genreTitle{
+        width: 100%;
+        padding: 0.45em 5%;
+    }
+
+    .moviesInGenre{
+        width: 100%;
+        padding: 0.45em 5%;
+        overflow-x: hidden;
+    }
+
+    .movie{
+        width: 30%;
+        min-width: 30%;
+        padding: 0.75em;
+        // margin-right: 0.5em;
+        transition: 0.25s ease-out;
+        cursor: pointer;
+
+        &:hover{
+            transform: translateY(-0.35em);
+            box-shadow: -4px 4px 10px 5px #eaeaea;;
+        }
+    }
+
+    .thumbnail{
+        width: 100%;
+    }
+
+    .imgWrap{
+        width: 100%;
+    }
+
+    .titleWrap{
+        width: 100%;
+        h2{
+            padding: 0.5em;
+            color: $pureWhite;
+            width: 100%;
+
+            background: linear-gradient(#00000000, #000000e0, $pureBlack);
+        }
+    }
+
+    .movieDetails{
+        width: 100%;
+        padding: 1em 0.5em;
+
+        justify-content: space-between;
+    }
+
+    .movieTitle{
+        margin-right: 1em;
+    }
+
+    .movieDuration{
+        padding: 0.2em 0.4em;
+        padding-bottom: 0em;
+        border: 0.125em solid $darkerGray;
+        border-radius: 0.35em;
+    }
+
+
+
 }
 
 
