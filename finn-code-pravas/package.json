@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "gsap": "^3.5.1",
     "next": "10.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",

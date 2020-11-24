@@ -1,6 +1,6 @@
 
-import { useState } from 'react'
-
+import { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
 
 import styles from '../assets/sass/home.module.scss'
 import utilStyles from '../assets/sass/libs/utils.module.scss'
@@ -38,15 +38,153 @@ const Home = (props) => {
         return moviesCategorisedIntoGenres
     }
 
-   
 
+    
     const [ genreWiseMovies ] = useState(() => genreWiseData()) 
     // I am setting state this way because 'genreWiseData' is an expensive function
     // expensive function and I don't want this state to be changed everytime
     // the component renders. This way, genreWiseData() only runs once and sets 
     // 'genreWiseMovies' as state only once.
+    
 
-    console.log(genreWiseMovies)
+
+
+
+    useEffect(() => {
+
+
+        // Removes arrow buttons for sliders which have less movie cards
+        // in them. i.e. if the slider container is not overflowing with
+        // movie elements then display : none for arrows
+
+        Object.keys(genreWiseMovies).forEach(genre => {
+            let sliderElement = document.getElementsByClassName(`${genre}-slideMovie`)[0]
+            let containerElement = document.getElementsByClassName(`${styles.sliderWrap}`)[0]
+
+            const elementWidth = sliderElement.scrollWidth,
+            containerWidth = containerElement.clientWidth
+
+            if(containerWidth > elementWidth) {
+                gsap.set(
+                    [`.left-btn-${genre}`, `.right-btn-${genre}`],
+                    {
+                        display: 'none'
+                    }
+                )
+            }
+        })
+        
+    }, [])
+
+
+
+
+    
+
+    const noOfScrolls = {}
+
+    const slideIt = (leftOrRight, genre) => {
+
+        let sliderElement = document.getElementsByClassName(`${genre}-slideMovie`)[0]
+        let containerElement = document.getElementsByClassName(`${styles.sliderWrap}`)[0]
+
+        const elementWidth = sliderElement.scrollWidth,
+            containerWidth = containerElement.clientWidth
+
+
+        // We can calculate the number of times sliderElement
+        // can be scrolled in the containerElement
+        const scrollTimes = Math.floor(elementWidth / containerWidth)
+        const scrollWidthRemaining = elementWidth % containerWidth
+
+        console.log({elementWidth, containerWidth, scrollTimes, scrollWidthRemaining})
+
+        
+
+        
+        if(leftOrRight === 'left'){
+            noOfScrolls[genre]--
+
+            if(noOfScrolls[genre] >= 0){
+                gsap.to(
+                    `.${genre}-slideMovie`,
+                    {
+                        x: - (noOfScrolls[genre] * containerWidth),
+                        duration: 0.5,
+                        ease: 'Power4.out'
+                    }
+                )
+                gsap.set(
+                    `.right-btn-${genre}`,
+                    {
+                        display: 'block'
+                    }
+                )
+
+                if(noOfScrolls[genre] === 0){
+                    gsap.set(
+                        `.left-btn-${genre}`,
+                        {
+                            display: 'none'
+                        }
+                    )
+                }
+               
+            }
+
+            else {
+                noOfScrolls[genre] = 0
+            }
+            
+        }
+
+        else if(leftOrRight === 'right'){
+
+            noOfScrolls[genre] ? noOfScrolls[genre]++ : noOfScrolls[genre] = 1
+
+
+            console.log(noOfScrolls[genre])
+
+            if(noOfScrolls[genre] < scrollTimes){
+                gsap.to(
+                    `.${genre}-slideMovie`,
+                    {
+                        x: - (noOfScrolls[genre] * containerWidth),
+                        duration: 0.5,
+                        ease: 'Power4.out'
+                    }
+                )
+                gsap.set(
+                    `.left-btn-${genre}`,
+                    {
+                        display: 'block'
+                    }
+                )
+            }
+
+            else if(noOfScrolls[genre] === scrollTimes){
+                console.log(noOfScrolls[genre] , containerWidth , scrollWidthRemaining )
+                gsap.to(
+                    `.${genre}-slideMovie`,
+                    {
+                        x: - ( ((scrollTimes - 1) * containerWidth ) + scrollWidthRemaining ) ,
+                        duration: 0.5,
+                        ease: 'Power4.out'
+                    }
+                )
+                gsap.set(
+                    `.right-btn-${genre}`,
+                    {
+                        display: 'none'
+                    }
+                )
+            }
+
+            else noOfScrolls[genre] = scrollTimes
+           
+        }
+    }
+
 
     const returnMoviesInGenre = (genre) => {
 
@@ -96,39 +234,43 @@ const Home = (props) => {
                     {genre}
                 </h2>
 
-                <div className={ `${styles.sliderWrap} ${utilStyles.posRel}` }>
-                   
+                <div className={ `${styles.sliderContainer}` }>
+                    
+                    <div className={ `${styles.sliderWrap} ${utilStyles.posRel}` }>
+                        
+                        <div className={ `${styles.leftButton} left-btn-${genre} ${utilStyles.posAbs_NW}` }>
+                            <button 
+                                className={ `${styles.clickButton} ${utilStyles.flexRow_Centre}` }
+                                onClick={() => { slideIt('left', genre) }}
+                                >
+                                <div className={ `${styles.arrowIconLeft}` }>
+                                    <LeftSliderButtonIcon/>
+                                </div>
+                            </button>
+                        </div>
 
-                    <div className={ `${styles.leftButton}  ${utilStyles.posAbs_NW}` }>
-                        <button 
-                            className={ `${styles.clickButton} ${utilStyles.flexRow_Centre}` }
-                            onClick={() => {}}
+                        <div 
+                            className={ `${styles.moviesInGenre} ${genre}-slideMovie ${utilStyles.flexRow_NW}` }
                             >
-                            <div className={ `${styles.arrowIconLeft}` }>
-                                <LeftSliderButtonIcon/>
-                            </div>
-                        </button>
-                    </div>
+                            {
+                                returnMoviesInGenre(genre)
+                            }
+                        </div>
 
-                    <div className={ `${styles.moviesInGenre} ${utilStyles.flexRow_NW}` }>
-                        {
-                            returnMoviesInGenre(genre)
-                        }
-                    </div>
+                        <div className={ `${styles.rightButton} right-btn-${genre}  ${utilStyles.posAbs_NE}` }>
+                            <button 
+                                className={ `${styles.clickButton} ${utilStyles.flexRow_Centre}` }
+                                onClick={() => { slideIt('right', genre) }}
+                                >
+                                <div className={ `${styles.arrowIconRight}` }>
+                                    <RightSliderButtonIcon/>
+                                </div>
+                            </button>
+                        </div>
 
-                    <div className={ `${styles.rightButton}  ${utilStyles.posAbs_NE}` }>
-                        <button 
-                            className={ `${styles.clickButton} ${utilStyles.flexRow_Centre}` }
-                            onClick={() => {}}
-                            >
-                            <div className={ `${styles.arrowIconRight}` }>
-                                <RightSliderButtonIcon/>
-                            </div>
-                        </button>
                     </div>
 
                 </div>
-
                 
             </div>
         ))

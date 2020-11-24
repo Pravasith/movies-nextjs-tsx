@@ -12,12 +12,19 @@
 
     .genreWrap{
         width: 100%;
+        overflow-x: hidden;
         // margin: 1em 0;
     }
 
     .sliderWrap{
         width: 100%;
-        margin: 0.45em 5%;
+        background: yellow;
+        // margin: 0.45em 5%;
+    }
+
+    .sliderContainer{
+        width: 100%;
+        padding: 0.45em 5%;
     }
 
     .genreTitle{
@@ -28,12 +35,13 @@
     }
 
     .moviesInGenre{
-        width: 100%;
+        width: fit-content;
+        // width: 100%;
     }
 
     .movie{
-        width: 30%;
-        min-width: 30%;
+        min-width: 30vw;
+        width: 30vw;
         padding: 0.75em;
         // margin-right: 0.5em;
         transition: 0.25s ease-out;
@@ -49,8 +57,34 @@
         width: 100%;
     }
 
+    @keyframes placeHolderShimmer {
+        0% {
+          background-position: 0px 0;
+        }
+        100% {
+          background-position: 100em 0;
+        }
+    }
+
+    @keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
     .imgWrap{
         width: 100%;
+        min-height: 10em;
+
+        background: linear-gradient(-90deg,  $lightestGray, $lightestGray, $lightGray , $mediumLightGray, $lightGray, $lightestGray, $lightestGray);
+        animation: Gradient 3s ease infinite;
+        background-size: 1000% 1000%;
     }
 
     .titleWrap{
@@ -83,6 +117,9 @@
     }
 
 
+    .slideMovie{
+        width: 100%;
+    }
     
     .clickButton{
 
@@ -156,12 +193,13 @@
     }
 
     .leftButton{
-        // transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 
     .rightButton{
-        margin-right: 3vw;
+        transform: translate(50%, -50%);
     }
+
 
 
 
