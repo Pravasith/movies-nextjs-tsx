@@ -1,3 +1,28 @@
+
+
+
+### Hello Finn Devs,
+
+Please follow the steps to view my application in a browser -
+
+Step 1 - Navigate to folder finn-code-pravas
+Step 2 - Run 'yarn build' on the command line
+Step 3 - After it builds, please run 'yarn start' to start the production server
+Step 4 - Visit http://localhost:3000 in your browser to see my assignment
+Step 5 - If you want to check in dev mode, please use 'yarn dev' command
+
+
+### A note from me -
+
+Please note that the page loading in **development** server is slow because I used **getStaticPaths** in
+/movie-details/[slug] page. However, the loading is extremely fast because of that in **production** server.
+I hope you like my application.
+
+-Thank you,
+Pravas.
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
