@@ -18,7 +18,7 @@
 
     .sliderWrap{
         width: 100%;
-        background: yellow;
+        // background: yellow;
         // margin: 0.45em 5%;
     }
 
@@ -194,6 +194,7 @@
 
     .leftButton{
         transform: translate(-50%, -50%);
+        display: none;
     }
 
     .rightButton{

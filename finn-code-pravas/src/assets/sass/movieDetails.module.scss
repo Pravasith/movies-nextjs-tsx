@@ -1,0 +1,151 @@
+@import './libs/vars';
+
+.container{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+
+    .detailsWrap{
+        width: 100%;
+
+        height: 30em;
+        margin-top: 15vh;
+        // background: pink;
+
+        padding: 6vh 5%;
+    }
+
+    .posterWrap{
+        max-width: 25%;
+        margin-right: 5%;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .movieDetails{
+        width: 70%;
+        padding: 1em 0;
+    }
+
+    .titleWrap, .descriptionWrap{
+        width: 100%;
+        margin-bottom: 1em;
+    }
+    
+
+    .leftWrap{
+        width: 70%;
+    }
+
+    .rightWrap{
+        width: 30%;
+    }
+
+    .starWrap{
+        width: 2em;
+        margin: 0 0.15em;
+    }
+
+    .movieTitle{
+        margin: 0.5em 0;
+    }
+
+}
+
+
+
+
+
+
+
+
+//  RESPONSIVENESS //// //// //// //// //// //// //// ////
+//  RESPONSIVENESS //// //// //// //// //// //// //// ////
+//  RESPONSIVENESS //// //// //// //// //// //// //// ////
+
+
+// MOBILE
+@media screen and (min-width: 100px) and (max-width: 767px) and (orientation: portrait)  {
+  
+    .container{
+    }
+  
+}
+
+@media screen and (min-width: 100px) and (max-width: 767px) and (orientation: landscape){
+    .container{
+    }
+} 
+
+
+
+
+
+// IPAD
+@media screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+    .container{
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+    .container{
+
+    }
+}
+  
+  
+  
+
+
+
+// 
+@media screen and (min-width: 1024px) and (max-width: 1151px)  and (orientation: portrait)  {
+    .container{
+    }
+
+}
+
+// 
+@media screen and (min-width: 1024px) and (max-width: 1151px)  and (orientation: landscape)  {
+    .container{
+    }
+
+}
+
+
+
+// 
+@media screen and (min-width: 1152px) and (max-width: 1365px){
+
+
+
+}
+
+
+
+// 
+@media screen and (min-width: 1366px) and (max-width: 1919px){
+
+
+
+
+
+}
+
+
+
+@media screen and (min-width: 1920px) and (max-width: 6000px){
+
+    .container{
+    }
+}
+
+
+
+
+
+//  RESPONSIVENESS //// //// //// //// //// //// //// ////
+//  RESPONSIVENESS //// //// //// //// //// //// //// ////
+//  RESPONSIVENESS //// //// //// //// //// //// //// ////

@@ -7,6 +7,8 @@ import utilStyles from '../assets/sass/libs/utils.module.scss'
 import { LeftSliderButtonIcon, RightSliderButtonIcon } from '../assets/SVGs/homeSVGs'
 
 import { useImage } from '../libs/useImage'
+import Head from 'next/head'
+import Link from 'next/link'
 
 
 const Home = (props) => {
@@ -97,7 +99,7 @@ const Home = (props) => {
         const scrollTimes = Math.floor(elementWidth / containerWidth)
         const scrollWidthRemaining = elementWidth % containerWidth
 
-        console.log({elementWidth, containerWidth, scrollTimes, scrollWidthRemaining})
+        // console.log({elementWidth, containerWidth, scrollTimes, scrollWidthRemaining})
 
         
 
@@ -143,7 +145,7 @@ const Home = (props) => {
             noOfScrolls[genre] ? noOfScrolls[genre]++ : noOfScrolls[genre] = 1
 
 
-            console.log(noOfScrolls[genre])
+            // console.log(noOfScrolls[genre])
 
             if(noOfScrolls[genre] < scrollTimes){
                 gsap.to(
@@ -163,7 +165,6 @@ const Home = (props) => {
             }
 
             else if(noOfScrolls[genre] === scrollTimes){
-                console.log(noOfScrolls[genre] , containerWidth , scrollWidthRemaining )
                 gsap.to(
                     `.${genre}-slideMovie`,
                     {
@@ -189,36 +190,45 @@ const Home = (props) => {
     const returnMoviesInGenre = (genre) => {
 
         return genreWiseMovies[genre].map((movie, i) => {
-            const { backdrop, title, length, genres } = movie
+            const { backdrop, title, length, genres, slug } = movie
+
 
             return (
-                <div 
-                    className={ `${styles.movie} ${utilStyles.flexCol_NW}` }
+                <Link
+                    href={`/movie-details/${slug}`}
                     key = {`${genre}-movie-${i}`}
                     >
-                    <div className={ `${styles.thumbnail} ${utilStyles.posRel}` }>
-                        <div className={ `${styles.imgWrap}` }>
-                            {
-                                useImage([
-                                    backdrop,
-                                    title,
-                                    `backdrop`
-                                ])
-                            }
-                        </div>
+                    <a>
+                        <div 
+                            className={ `${styles.movie} ${utilStyles.flexCol_NW}` }
+                            
+                            >
+                            <div className={ `${styles.thumbnail} ${utilStyles.posRel}` }>
+                                <div className={ `${styles.imgWrap}` }>
+                                    {
+                                        useImage([
+                                            backdrop,
+                                            title,
+                                            `backdrop`
+                                        ])
+                                    }
+                                </div>
 
-                        <div className={ `${styles.titleWrap}  ${utilStyles.posAbs_SW}` }>
-                            <h2 className={ `${styles.movieTitle}` } >{title}</h2>
+                                <div className={ `${styles.titleWrap}  ${utilStyles.posAbs_SW}` }>
+                                    <h2 className={ `${styles.movieTitle}` } >{title}</h2>
+                                </div>
+                            </div>
+                            
+            
+                            <div className={ `${styles.movieDetails} ${utilStyles.flexRow_Centre}` }>    
+                                <p className={ `${styles.genreHashTags}` } ><span>{genres.join(', ')}</span></p>                 
+                                <p className={ `${styles.movieDuration}` } >{length}</p>
+                                
+                            </div>
                         </div>
-                    </div>
-                    
-    
-                    <div className={ `${styles.movieDetails} ${utilStyles.flexRow_Centre}` }>    
-                        <p className={ `${styles.genreHashTags}` } ><span>{genres.join(', ')}</span></p>                 
-                        <p className={ `${styles.movieDuration}` } >{length}</p>
-                        
-                    </div>
-                </div>
+                    </a>
+                </Link>
+               
             )
         })
     }
@@ -278,8 +288,58 @@ const Home = (props) => {
     
     }
 
+
+    const HeadTag = () => {
+
+        const previewImage = `https://folio-pics.s3.eu-west-2.amazonaws.com/pravasith.png`,
+            description = `Finn assignment by Pravas - Wookie Movie app`,
+            name = `Finn Movies`,
+            currentURL = `http://localhost:5000/`
+
+
+        return (
+            <Head>
+                <title>{description}</title>
+                <link rel="icon" href="/favicon.ico" />
+
+
+                {/* Twitter */}
+
+                <meta name="twitter:card" content="summary" key="twcard" />
+                <meta name="twitter:title" content={name} key="twtitle" />
+                <meta
+                    name="twitter:description"
+                    content={description}
+                    key="twdesc"
+                />
+                <meta name="twitter:creator" content="@Pravasith"  key="twcreator" />
+                <meta
+                    name="twitter:image"
+                    content={previewImage}
+                    key="twimg"
+                />
+
+                {/* Open Graph */}
+                <meta property="og:url" content={currentURL} key="ogurl" />
+                <meta property="og:image" content={previewImage} key="ogimage" />
+                <meta property="og:site_name" content={name} key="ogsitename" />
+                <meta property="og:title" content={name} key="ogtitle" />
+                <meta property="og:description" content={description} key="ogdesc" />
+            </Head>
+        )
+
+    }
+
+    
+    
+
+
     return (
         <>
+            {
+                <HeadTag/>
+            }
+
             <div className={ `${styles.container}` }>
                 <div className={ `${styles.homeWrap} ${utilStyles.flexCol_NW}` }>
                     {

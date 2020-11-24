@@ -12,11 +12,19 @@ import { NavbarLogo, SearchLogo } from '../assets/SVGs/navbarSVGs.js'
 
 import { useEffect, useState } from 'react'
 import { useImage } from '../libs/useImage'
+import { useForm } from '../libs/useForm'
+import { useMovies } from '../libs/useMovies'
 
 const Navbar = () => {
 
     const router = useRouter()
-    const [ showDropDown, setShowDropDown ] = useState(false)
+    const [ showDropDown, setShowDropDown ] = useState(true)
+
+    const [ values, setOnChangeValues ] = useForm({ movie_searched: '' })
+
+    const { data, loading } = useMovies(values.movie_searched)
+
+   
 
     const returnMenuItems = () => {
         return (
@@ -27,14 +35,14 @@ const Navbar = () => {
 
                 <div className={ `${styles.searchForm} ${utilStyles.posRel}` }>
                     
-                    <form 
-                        // onSubmit={} 
-                        className={ `${styles.formElement}` }
-                        >
-                        <input type="text" name="search" className={ `${styles.searchField}` } />
-                    </form>
+                    <input 
+                        type="text"
+                        name="movie_searched" 
+                        className={ `${styles.searchField}` }
+                        onChange={setOnChangeValues}
+                    />
 
-                    <div className={ `${showDropDown ? null : styles.hide} ${styles.dropDown} ${utilStyles.posAbs_NW}` } >
+                    <div className={ `${!loading ? null : styles.hide} ${styles.dropDown} ${utilStyles.posAbs_NW}` } >
                         <div className={ `${styles.previewSearches} ${utilStyles.flexCol_NW}` }>
                             <div className={ `${styles.previewMovie} ${utilStyles.flexRow_NW}` }>
                                 <div className={ `${styles.miniThumb}` }>
@@ -50,7 +58,12 @@ const Navbar = () => {
                                 </div>
 
                                 <div className={ `${styles.details} ${utilStyles.flexCol_NW}` }>
-                                    <h2>Dark Knight Rises</h2>
+                                    <h2>
+                                        {
+                                            loading ? "..." : 
+                                            JSON.stringify(data, null, 2)
+                                        }
+                                        </h2>
                                     <p>IMDB <span>9.0</span></p>
                                     <p>{`Starring ${"Put your string here"}`}</p>
                                 </div>
