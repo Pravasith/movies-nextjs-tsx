@@ -8,9 +8,16 @@ import { useRouter } from 'next/router'
 import styles from '../assets/sass/movieDetails.module.scss'
 import utilStyles from '../assets/sass/libs/utils.module.scss'
 import Head from 'next/head'
+import { Movie } from '../../interfaces/movies'
+import { FC } from 'react'
 
 
-const MovieDetails = (props) => {
+type Props = {
+    movieData: Movie
+}
+
+
+const MovieDetails: FC<Props> = (props: Props) => {
 
     const { movieData } = props
 
@@ -18,7 +25,7 @@ const MovieDetails = (props) => {
 
     // console.log(movieData)
 
-    const returnIMDBStars = (imdb_rating) => {
+    const returnIMDBStars = (imdb_rating: number) => {
 
         // IMDB 10 point rating system converted to 5 star rating system
         const convertTo5Star = Math.ceil(
@@ -48,9 +55,9 @@ const MovieDetails = (props) => {
         // )
 
         const starArray = [
-            ...Array(noOfFullStars).fill().map(x => <FullStar/>),
-            ...Array(noOfHalfStars).fill().map(x => <HalfStar/>),
-            ...Array(noOfNoStars).fill().map(x => <NoStar/>),
+            ...Array(noOfFullStars).fill(null).map(x => <FullStar/>),
+            ...Array(noOfHalfStars).fill(null).map(x => <HalfStar/>),
+            ...Array(noOfNoStars).fill(null).map(x => <NoStar/>),
         ]
 
 

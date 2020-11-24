@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 import styles from '../assets/sass/home.module.scss'
@@ -23,18 +23,11 @@ interface Genre {
 
 
 
-const Home = (props: Props) => {
+const Home: FC<Props> = (props: Props) => {
     const { movies } = props
-
-    
-
-  
-
 
     const genreWiseData = () => {
 
-
-        
 
         const moviesCategorisedIntoGenres = movies.reduce((all: Genre, movie, i) => {
             // imagine 'all' has this data like so -

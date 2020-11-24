@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import { FC } from 'react'
 import { Movie } from '../interfaces/movies'
 
 import Home from '../src/components/home'
@@ -11,15 +12,16 @@ type HomeProps = {
 	movies : Movie[]
 }
 
-function Index(props: HomeProps) {
+
+const Index: FC<HomeProps> = (props: HomeProps) => {
 
 	return (
 		<div className="container">
-				<main>
-					<Home
-						{ ...props }
-					/>
-				</main>
+			<main>
+				<Home
+					{ ...props }
+				/>
+			</main>
 
 			<footer>
 			</footer>

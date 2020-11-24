@@ -1,14 +1,20 @@
 import Axios from "axios"
 import { useEffect, useLayoutEffect, useState } from "react"
+import { Movie } from "../../interfaces/movies"
 import { API_URL } from "../configs/apiConfig"
 import { getDataFromAPI } from "./getData"
 
 
-export const useMovies = (movie_searched) => {
+export const useMovies = (movie_searched: string) => {
 
-    const [ mState, setMState ] = useState(
+    interface MState {
+        data : null | Movie[]
+        loading : boolean
+    }
+
+    const [ mState, setMState ] = useState<MState>(
         {
-            data : [],
+            data : null,
             loading : true
         }
     )

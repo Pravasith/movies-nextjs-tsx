@@ -1,7 +1,11 @@
 import { useState } from "react"
 
+type Value = {
+    movie_searched?: string
+}
+
 // My custom hook for handling input forms
-export const useForm = (initialValue) => {
+export const useForm = (initialValue: Value) => {
     const [ values, setValues ] = useState(initialValue)
 
     return [

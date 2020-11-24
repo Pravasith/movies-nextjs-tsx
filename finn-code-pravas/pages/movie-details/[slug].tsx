@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { FC } from 'react'
 
 import { Movie } from '../../interfaces/movies'
 import MovieDetails from '../../src/components/movieDetails'
@@ -8,10 +9,11 @@ import { getDataFromAPI } from '../../src/libs/getData'
 
 
 type MovieDetailProps = {
-    movieData: Movie[]
+    movieData: Movie
 }
 
-function Index(props: MovieDetailProps) {
+
+const Index: FC<MovieDetailProps> = (props: MovieDetailProps) => {
 
 
     return (

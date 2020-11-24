@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 
@@ -9,23 +10,24 @@ import utilStyles from '../assets/sass/libs/utils.module.scss'
 import { NavbarLogo, SearchLogo } from '../assets/SVGs/navbarSVGs.js'
 
 
-import { FunctionComponent,  ReactChildren, ReactElement, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useImage } from '../libs/useImage'
 import { useForm } from '../libs/useForm'
 import { useMovies } from '../libs/useMovies'
 import { Movie } from '../../interfaces/movies'
 
-const Navbar: FunctionComponent = () => {
+const Navbar: FC = () => {
 
+    const router = useRouter()
     const [ showDropDown, setShowDropDown ] = useState(true)
+
     const [ values, setOnChangeValues ] = useForm({ movie_searched: '' })
 
     const { data, loading } = useMovies(values.movie_searched)
 
-    const movieSuggestions = () => {
-
-        if(data.length > 0){
-            return data.map((movie:Movie, i) => {
+    const returnMovieSuggestion = () => {
+        if(data !== null && data.length > 0){
+            return data.map((movie: Movie, i) => {
                 return (
                     <Link
                         href={`/movie-details/${movie.slug}`}
@@ -68,6 +70,7 @@ const Navbar: FunctionComponent = () => {
             })
         }
 
+
         else{
             return <p>{`Movie not found, use full words`}</p>
         }
@@ -81,7 +84,7 @@ const Navbar: FunctionComponent = () => {
                 <div className={ `${styles.previewSearches} ${utilStyles.flexCol_NW}` }>
 
                     {
-                        movieSuggestions()
+                        returnMovieSuggestion()
                     }
 
                 </div>
@@ -91,7 +94,7 @@ const Navbar: FunctionComponent = () => {
         )
     }
 
-    const MenuItems = (): ReactElement => {
+    const returnMenuItems = () => {
         return (
             <div className={ `${styles.searchContainer} ${utilStyles.flexRow_E}` }>
                 <div className={ `${styles.searchIcon} ${utilStyles.flexCol_NW}` }>
@@ -151,7 +154,9 @@ const Navbar: FunctionComponent = () => {
 
 
                     <div className={`${styles.menuItems} ${utilStyles.flexRow_E}`}>
-                        <MenuItems/>
+                        {
+                            returnMenuItems()
+                        }
                     </div>
                 
                 </nav>

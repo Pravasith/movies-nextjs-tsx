@@ -1,10 +1,16 @@
-import Axios from 'axios'
+import { Movie } from './../../interfaces/movies';
+import Axios, { AxiosRequestConfig } from 'axios'
 import { API_AUTH_TOKEN } from '../configs/apiConfig'
 
 
-export const getDataFromAPI = url => {
+export const getDataFromAPI = (url: string) => {
 
-    const requestData = {
+
+    interface IGet {
+        movies : Movie[] | []
+    }
+
+    const requestData: AxiosRequestConfig = {
         headers: {
             'accept': 'application/json',
             'Accept-Language': 'en-US,en;q=0.8',
@@ -15,16 +21,19 @@ export const getDataFromAPI = url => {
         // withCredentials: true // for cookie Auth
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise<IGet>((resolve, reject) => {
 
         let data
 
-        Axios.get(
+
+        Axios.get<IGet>(
             url,
             requestData
         )
         .then(res => {
             data = res.data
+
+            // console.log(data, "pravas")
             resolve(data)
         })
         .catch(e => {

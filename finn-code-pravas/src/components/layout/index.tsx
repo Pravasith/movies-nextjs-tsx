@@ -1,4 +1,4 @@
-import { ReactNode, FunctionComponent } from "react"
+import { ReactNode, FunctionComponent, FC } from "react"
 
 
 import styles from '../../assets/sass/layout/layout.module.scss'
@@ -11,7 +11,7 @@ type Props = {
 }
 
 
-const Layout = ( props: Props ) => {
+const Layout:FC<Props> = ( props: Props ) => {
 
     const { children } = props
 

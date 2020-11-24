@@ -21,7 +21,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx", "src/libs/useForm.ts", "src/libs/useMovies.ts", "src/components/navbar.tsx"
   ],
   "exclude": [
     "node_modules"
