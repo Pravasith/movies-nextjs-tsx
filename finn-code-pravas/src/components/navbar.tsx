@@ -98,8 +98,6 @@ const Navbar: FC = () => {
                     />
 
                     {!loading && showDropDown ? <DropDownMenu /> : null}
-
-                    {/* <DropDownMenu/> */}
                 </div>
             </div>
         )

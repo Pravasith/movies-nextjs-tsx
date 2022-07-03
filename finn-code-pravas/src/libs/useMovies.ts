@@ -17,10 +17,6 @@ export const useMovies = (movie_searched: string) => {
 
     const url = `${API_URL}?q=${movie_searched}`
 
-    // useEffect(() => {
-    //     console.log(mState)
-    // }, [mState])
-
     useEffect(() => {
         // Don't request data if user hasn't searched anything
         setMState({
@@ -31,12 +27,6 @@ export const useMovies = (movie_searched: string) => {
         if (movie_searched.length > 3) {
             getDataFromAPI(url)
                 .then(res => {
-                    // console.log(
-                    //     {
-                    //         data : res.movies,
-                    //         loading : false
-                    //     }
-                    // )
                     setMState({
                         data: res.movies,
                         loading: false,
@@ -49,13 +39,6 @@ export const useMovies = (movie_searched: string) => {
                     )
                 )
         }
-
-        // else{
-        //     setMState({
-        //         data: [],
-        //         loading : false
-        //     })
-        // }
     }, [url])
 
     return mState

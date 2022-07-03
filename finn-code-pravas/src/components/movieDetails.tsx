@@ -31,15 +31,6 @@ const MovieDetails: FC<Props> = (props: Props) => {
         const noOfHalfStars = Number(convertTo5Star.split("")[1]) === 5 ? 1 : 0
         const noOfNoStars = 5 - (noOfFullStars + noOfHalfStars)
 
-        // console.log(
-        //     {
-        //         convertTo5Star,
-        //         noOfFullStars,
-        //         noOfHalfStars,
-        //         noOfNoStars,
-        //     }
-        // )
-
         const starArray = [
             ...Array(noOfFullStars)
                 .fill(null)

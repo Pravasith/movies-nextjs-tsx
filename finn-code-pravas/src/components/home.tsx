@@ -105,8 +105,6 @@ const Home: FC<Props> = (props: Props) => {
         const scrollTimes: number = Math.floor(elementWidth / containerWidth)
         const scrollWidthRemaining: number = elementWidth % containerWidth
 
-        // console.log({elementWidth, containerWidth, scrollTimes, scrollWidthRemaining})
-
         if (leftOrRight === "left") {
             noOfScrolls[genre]--
 
@@ -130,8 +128,6 @@ const Home: FC<Props> = (props: Props) => {
             }
         } else if (leftOrRight === "right") {
             noOfScrolls[genre] ? noOfScrolls[genre]++ : (noOfScrolls[genre] = 1)
-
-            // console.log(noOfScrolls[genre])
 
             if (noOfScrolls[genre] < scrollTimes) {
                 gsap.to(`.${genre}-slideMovie`, {
